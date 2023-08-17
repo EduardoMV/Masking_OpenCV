@@ -11,4 +11,4 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(ClassWork_170823 main.cpp)
 
-target_link_libraries(ClassWork_150823 ${OpenCV_LIBS})
+target_link_libraries(ClassWork_170823 ${OpenCV_LIBS})
