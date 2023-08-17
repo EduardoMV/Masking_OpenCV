@@ -23,6 +23,7 @@ int main() {
 
     namedWindow("PhotoFrame", WINDOW_NORMAL);
     imshow("PhotoFrame", msk);
+    imwrite("Mask.jpg", msk);
     waitKey(0);
 
     return 0;
