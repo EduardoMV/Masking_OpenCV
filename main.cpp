@@ -8,6 +8,7 @@ using namespace std;
 int main() {
 
     Mat ori = imread("../flower.jpg", IMREAD_GRAYSCALE);
+    //Mat ori2 = imread("../pear.jpg", IMREAD_GRAYSCALE);
     Mat msk(ori.rows, ori.cols, CV_8U, Scalar(0));
 
     for(int row = 0; row < ori.rows; row++){
