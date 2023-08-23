@@ -50,8 +50,51 @@ void Binary_Inv(){
     waitKey(0);
 }
 
+void ToZero(){
+    Mat ori = imread("../flower.jpg", IMREAD_GRAYSCALE);
+    Mat msk_Z(ori.rows, ori.cols, CV_8U, Scalar(0));
+
+    for(int row = 0; row < ori.rows; row++){
+        for(int col = 0; col < ori.cols; col++){
+            if(ori.at<uchar>(row, col) > 125){
+                msk_Z.at<uchar>(row,col) = uchar(ori.at<uchar>(row,col));
+            }
+            else{
+                msk_Z.at<uchar>(row,col) = uchar(0);
+            }
+        }
+
+    }
+
+    namedWindow("PhotoFrame", WINDOW_NORMAL);
+    imshow("PhotoFrame", msk_Z);
+    imwrite("MaskZ.jpg", msk_Z);
+    waitKey(0);
+}
+
+void ToZero_Inv(){
+    Mat ori = imread("../flower.jpg", IMREAD_GRAYSCALE);
+    Mat msk_Z(ori.rows, ori.cols, CV_8U, Scalar(0));
+
+    for(int row = 0; row < ori.rows; row++){
+        for(int col = 0; col < ori.cols; col++){
+            if(ori.at<uchar>(row, col) > 125){
+                msk_Z.at<uchar>(row,col) = uchar(0);
+            }
+            else{
+                msk_Z.at<uchar>(row,col) = uchar(ori.at<uchar>(row,col));
+            }
+        }
+
+    }
+
+    namedWindow("PhotoFrame", WINDOW_NORMAL);
+    imshow("PhotoFrame", msk_Z);
+    imwrite("MaskZ_Inv.jpg", msk_Z);
+    waitKey(0);
+}
 
 int main() {
-    Binary_Inv();
+    ToZero_Inv();
     return 0;
 }
