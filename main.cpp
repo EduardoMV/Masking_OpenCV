@@ -94,7 +94,30 @@ void ToZero_Inv(){
     waitKey(0);
 }
 
+void Trunc(){
+    Mat ori = imread("../flower.jpg", IMREAD_GRAYSCALE);
+    Mat msk_Trunc(ori.rows, ori.cols, CV_8U, Scalar(0));
+
+    int thresholdValue = 125;
+
+    for (int row = 0; row < ori.rows; row++) {
+        for (int col = 0; col < ori.cols; col++) {
+            if (ori.at<uchar>(row, col) > thresholdValue) {
+                msk_Trunc.at<uchar>(row, col) = ori.at<uchar>(row, col);
+            }
+            else {
+                msk_Trunc.at<uchar>(row, col) = thresholdValue;
+            }
+        }
+    }
+
+    namedWindow("PhotoFrame", WINDOW_NORMAL);
+    imshow("PhotoFrame", msk_Trunc);
+    imwrite("MaskTrunc.jpg", msk_Trunc);
+    waitKey(0);
+}
+
 int main() {
-    ToZero_Inv();
+    Trunc();
     return 0;
 }
